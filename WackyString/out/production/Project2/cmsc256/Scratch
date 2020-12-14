@@ -1,0 +1,296 @@
+package cmsc256;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+class RamStringTest {
+
+    @org.junit.jupiter.api.Test
+    void setWackyString() {
+    }
+
+    @org.junit.jupiter.api.Test
+    void getWackyString() {
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_1() {
+        RamString defaultString = new RamString();
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("dyt m".equals(everyThird));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString(""); // null doesn't work
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("".equals(everyThird));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("12345");
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("3".equals(everyThird));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("no");
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("".equals(everyThird));
+    }
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("12 45 7");
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("  ".equals(everyThird));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEveryThirdCharacter_6() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("");
+        String everyThird = defaultString.getEveryThirdCharacter();
+        assertTrue("".equals(everyThird));
+    }
+
+    // GET EVEN OR ODD
+    @org.junit.jupiter.api.Test
+    void getEvenOrOddCharacters_1() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("Ram!");
+        String evenOrOdd = defaultString.getEvenOrOddCharacters("even");
+        assertTrue("a!".equals(evenOrOdd));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEvenOrOddCharacters_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("");
+        String evenOrOdd = defaultString.getEvenOrOddCharacters("odd");
+        assertTrue("".equals(evenOrOdd));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEvenOrOddCharacters_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("");
+        String evenOrOdd = defaultString.getEvenOrOddCharacters("Even");
+        assertTrue("".equals(evenOrOdd));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEvenOrOddCharacters_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("a");
+        String evenOrOdd = defaultString.getEvenOrOddCharacters("ODD");
+        assertTrue("a".equals(evenOrOdd));
+    }
+
+    @org.junit.jupiter.api.Test
+    void getEvenOrOddCharacters_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("b ");
+        String evenOrOdd = defaultString.getEvenOrOddCharacters("even");
+        assertTrue(" ".equals(evenOrOdd));
+    }
+
+    // COUNT DOUBLE DIG
+    @org.junit.jupiter.api.Test
+    void countDoubleDigits_1() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("tararam01");
+        int doubleDigit = defaultString.countDoubleDigits();
+        assertTrue(1==(doubleDigit));
+    }
+
+    @org.junit.jupiter.api.Test
+    void countDoubleDigits_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString(""); // when this is null, method does not pass --> why is that
+        int doubleDigit = defaultString.countDoubleDigits();
+        assertTrue(0==(doubleDigit));
+    }
+
+    @org.junit.jupiter.api.Test
+    void countDoubleDigits_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("2roar2");
+        int doubleDigit = defaultString.countDoubleDigits();
+        assertTrue(0==(doubleDigit));
+    }
+
+    @org.junit.jupiter.api.Test
+    void countDoubleDigits_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("21hi21");
+        int doubleDigit = defaultString.countDoubleDigits();
+        assertTrue(2==(doubleDigit));
+    }
+
+    @org.junit.jupiter.api.Test
+    void countDoubleDigits_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("hi333");
+        int doubleDigit = defaultString.countDoubleDigits();
+        assertTrue(0==(doubleDigit));
+    }
+
+    //isVAlid EMAIL
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("hi@vcu.edu");
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(true==validEmail);
+    }
+
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString(""); //Test with null
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(false==validEmail);
+    }
+
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("@vcu.edu");
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(false==validEmail);
+    }
+
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("hi@vu.edu");
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(false==validEmail);
+    }
+
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("hiavcu.edu");
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(false==validEmail);
+    }
+
+    @org.junit.jupiter.api.Test
+    void isValidVCUEmail_6() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString(" @vcu.edu");
+        boolean validEmail = defaultString.isValidVCUEmail();
+        assertTrue(true==validEmail);
+    }
+
+    // RAMIFY STRING
+    @org.junit.jupiter.api.Test
+    void ramifyString() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("0h");
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals("GoRamsh"));
+    }
+
+    @org.junit.jupiter.api.Test
+    void ramifyString_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("00y");
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals("CS@VCUy"));
+    }
+
+    @org.junit.jupiter.api.Test
+    void ramifyString_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString(""); // null doesnt work
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals(""));
+    }
+
+    @org.junit.jupiter.api.Test
+    void ramifyString_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("0 0");
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals("GoRams GoRams"));
+    }
+
+    @org.junit.jupiter.api.Test
+    void ramifyString_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("ooo");
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals("ooo"));
+    }
+
+    @org.junit.jupiter.api.Test
+    void ramifyString_6() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("000");
+        defaultString.ramifyString();
+        assertTrue(defaultString.getWackyString().equals("CS@VCUGoRams"));
+    }
+
+    //CONVERT DIG TO ROMAN
+    @org.junit.jupiter.api.Test
+    void convertDigitsToRomanNumeralsInSubstring() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("460");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(1,3);
+        assertTrue(defaultString.getWackyString().equals("IVVI0")); //MAKE SURE TO MAKE THIS ALL CAPS IN CLASS CODE
+    }
+
+    @org.junit.jupiter.api.Test
+    void convertDigitsToRomanNumeralsInSubstring_2() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("hii");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(1,3);
+        assertTrue(defaultString.getWackyString().equals("")); //MAKE SURE TO MAKE THIS ALL CAPS IN CLASS CODE
+    }
+
+    @org.junit.jupiter.api.Test
+    void convertDigitsToRomanNumeralsInSubstring_3() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("000");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(1,1);
+        assertTrue(defaultString.getWackyString().equals("0")); //MAKE SURE TO MAKE THIS ALL CAPS IN CLASS CODE
+    }
+
+    @org.junit.jupiter.api.Test
+    void convertDigitsToRomanNumeralsInSubstring_4() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("24.5");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(2,4);
+        assertTrue(defaultString.getWackyString().equals("IVV")); //MAKE SURE TO MAKE THIS ALL CAPS IN CLASS CODE
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    void convertDigitsToRomanNumeralsInSubstring_5() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("460");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(3,1); //ERR
+    }
+
+    @org.junit.Test(expected = MyIndexOutOfBoundsException.class)
+    void convertDigitsToRomanNumeralsInSubstring_6() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("460");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(0,3);
+    }
+
+    @org.junit.jupiter.api.Test
+    void convertDigitsToRomanNumeralsInSubstring_7() {
+        RamString defaultString = new RamString();
+        defaultString.setWackyString("460");
+        defaultString.convertDigitsToRomanNumeralsInSubstring(1,Integer.MAX_VALUE);
+    }
+
+}
